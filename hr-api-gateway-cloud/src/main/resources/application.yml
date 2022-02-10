@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: hr-api-gateway-cloud
+  cloud:
+    gateway:
+      routes:
+        - id: hr-worker
+          uri: http://localhost:8765
+          predicates:
+            - Path=/hr-worker/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: hr-worker
+                fallbackuri: forward:/workerFallBack
+        - id: hr-payroll
+          uri: http://localhost:8765
+          predicates:
+            - Path=/hr-payroll/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: hr-worker
+                fallbackuri: forward:/payRollFallBack
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+server:
+  port: 8765
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
