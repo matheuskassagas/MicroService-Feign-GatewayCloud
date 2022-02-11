@@ -1,18 +1,15 @@
-package com.devms.hrconfigserver;
-
+package com.devms.hruser;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-@EnableConfigServer
-@SpringBootApplication
 @EnableEurekaClient
-public class HrConfigServerApplication {
+@SpringBootApplication
+public class HrUserApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HrConfigServerApplication.class, args);
+		SpringApplication.run(HrUserApplication.class, args);
 	}
 
 }
