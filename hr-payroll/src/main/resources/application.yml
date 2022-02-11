@@ -10,8 +10,22 @@ spring:
 eureka:
   client:
     register-with-eureka:
-      fetch-registry:
+      fetch-registry: ture
       service-url:
         defaultZone: http://localhost:8761/eureka/
   instance:
     hostname: localhost
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
