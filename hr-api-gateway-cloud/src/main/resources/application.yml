@@ -22,6 +22,15 @@ spring:
               args:
                 name: hr-payroll
                 fallbackuri: forward:/payRollFallBack
+        - id: hr-user
+          uri: http://localhost:8765
+          predicates:
+            - Path=/hr-user/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: hr-user
+                fallbackuri: forward:/userFallBack
 
 
 

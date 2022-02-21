@@ -1,4 +1,4 @@
-package com.devms.hruser.entity;
+package com.devms.hruser.repository.entity;
 
 
 import javax.persistence.*;
@@ -15,6 +15,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(unique = true)
     private String email;
     private String password;
 

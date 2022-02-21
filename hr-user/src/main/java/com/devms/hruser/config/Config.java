@@ -1,7 +1,7 @@
 package com.devms.hruser.config;
 
-import com.devms.hruser.entity.Role;
-import com.devms.hruser.entity.User;
+import com.devms.hruser.repository.entity.Role;
+import com.devms.hruser.repository.entity.User;
 import com.devms.hruser.repository.RoleRepository;
 import com.devms.hruser.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
