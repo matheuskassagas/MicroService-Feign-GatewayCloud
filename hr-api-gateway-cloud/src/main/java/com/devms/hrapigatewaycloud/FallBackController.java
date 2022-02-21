@@ -19,6 +19,11 @@ public class FallBackController {
 
     @RequestMapping("/userFallBack")
     public Mono<String> userFallBack(){
-        return Mono.just("Payment is taking too long to respond or is down. Please try again later");
+        return Mono.just("User is taking too long to respond or is down. Please try again later");
+    }
+
+    @RequestMapping("/oauthFallBack")
+    public Mono<String> oauthFallBack(){
+        return Mono.just("Authorization is taking too long to respond or is down. Please try again later");
     }
 }

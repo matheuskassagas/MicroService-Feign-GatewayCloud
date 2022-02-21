@@ -31,6 +31,15 @@ spring:
               args:
                 name: hr-user
                 fallbackuri: forward:/userFallBack
+        - id: hr-oauth
+          uri: http://localhost:8765
+          predicates:
+            - Path=/hr-oauth/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: hr-oauth
+                fallbackuri: forward:/oauthFallBack
 
 
 

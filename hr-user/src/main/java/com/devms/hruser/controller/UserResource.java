@@ -22,7 +22,7 @@ public class UserResource {
         }
 
     @GetMapping(value = "/search")
-    public ResponseEntity<User> findById(@RequestParam String email) throws Exception {
+    public ResponseEntity<User> findByEmail(@RequestParam String email) throws Exception {
         User obj = userService.findByEmail(email);
         return ResponseEntity.ok().body(obj);
     }
