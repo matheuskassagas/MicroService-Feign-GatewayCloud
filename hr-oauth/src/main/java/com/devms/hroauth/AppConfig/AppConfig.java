@@ -9,8 +9,6 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.stereotype.Component;
 
 @Configuration
-@EnableAuthorizationServer
-@Component
 public class AppConfig {
 
     @Bean //responsavel por encripitar
