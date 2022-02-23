@@ -1,5 +1,6 @@
 package com.devms.hroauth.AppConfig;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,6 +12,9 @@ import org.springframework.stereotype.Component;
 @Configuration
 public class AppConfig {
 
+    @Value("${jwt.secret}")
+    private String jwtSecret;
+
     @Bean //responsavel por encripitar
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -19,7 +23,7 @@ public class AppConfig {
     @Bean //
     public JwtAccessTokenConverter accessTokenConverter(){
         JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
-        tokenConverter.setSigningKey("MY-SECRET-KEY");
+        tokenConverter.setSigningKey(jwtSecret);
         return tokenConverter;
     }
 
